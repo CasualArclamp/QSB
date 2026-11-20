@@ -1,10 +1,10 @@
 [package]
-name = "multipath"
+name = "qsb"
 description = "Adds HF multipath (delay, Doppler shift, fading, noise) to WAV files, with a live preview"
 version = "0.1.0"
 edition = "2024"
 license = "GPL-3.0-or-later"
-repository = "https://github.com/CasualArclamp/Multipath"
+repository = "https://github.com/CasualArclamp/QSB"
 rust-version = "1.95"
 
 [dependencies]

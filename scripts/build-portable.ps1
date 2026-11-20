@@ -1,4 +1,4 @@
-# Builds the portable multipath.exe (static C runtime, nothing to install) into exe\,
+# Builds the portable qsb.exe (static C runtime, nothing to install) into exe\,
 # which git ignores:
 #
 #   powershell -ExecutionPolicy Bypass -File scripts\build-portable.ps1
@@ -12,7 +12,7 @@ $env:CARGO_TARGET_DIR = Join-Path $root 'target\portable'
 cargo build --release --target x86_64-pc-windows-msvc
 if ($LASTEXITCODE -ne 0) { throw 'build failed' }
 New-Item -ItemType Directory -Force (Join-Path $root 'exe') | Out-Null
-$name = 'multipath.exe'
+$name = 'qsb.exe'
 $built = Join-Path $env:CARGO_TARGET_DIR "x86_64-pc-windows-msvc\release\$name"
 # A static build must not ask for the C runtime DLLs.
 $text = [System.Text.Encoding]::ASCII.GetString([System.IO.File]::ReadAllBytes($built))

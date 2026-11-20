@@ -1,11 +1,11 @@
 #![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
-//! Multipath: put a WAV file through a simulated HF channel (echoes, Doppler shift,
+//! QSB (the Q-code for a fading signal): put a WAV file through a simulated HF channel (echoes, Doppler shift,
 //! fading, noise), listen to it while moving the sliders, and write the result.
 //!
-//! `multipath [FILE.wav] [--preset NAME] [--mode audio|iq|isb] [--seed N]`
+//! `qsb [FILE.wav] [--preset NAME] [--mode audio|iq|isb] [--seed N]`
 //! `          [--play] [--mute] [--screenshot OUT.png --after SECS]`
-//! `multipath --render IN.wav OUT.wav [--preset NAME] [--mode M] [--seed N] [--snr DB]`
-//! `multipath --spectrogram IN.wav OUT.png [--mode M]`
+//! `qsb --render IN.wav OUT.wav [--preset NAME] [--mode M] [--seed N] [--snr DB]`
+//! `qsb --spectrogram IN.wav OUT.png [--mode M]`
 
 mod channel;
 mod player;
@@ -137,7 +137,7 @@ impl App {
         let stem = file.file_stem().unwrap_or_default().to_string_lossy();
         let mut dialog = rfd::FileDialog::new()
             .add_filter("WAV", &["wav"])
-            .set_file_name(format!("{stem}_multipath.wav"));
+            .set_file_name(format!("{stem}_qsb.wav"));
         if let Some(dir) = file.parent() {
             dialog = dialog.set_directory(dir);
         }
@@ -163,7 +163,7 @@ impl App {
     // ---------------------------------------------------------------- top bar
     fn top_bar(&mut self, ui: &mut Ui) {
         ui.horizontal(|ui| {
-            ui.label(RichText::new("Multipath").strong().color(Color32::WHITE).size(16.0));
+            ui.label(RichText::new("QSB").strong().color(Color32::WHITE).size(16.0));
             ui.add_space(8.0);
             if ui.button("Open WAV…").clicked()
                 && let Some(p) = rfd::FileDialog::new()
@@ -825,7 +825,7 @@ fn main() -> eframe::Result {
     let mut viewport = egui::ViewportBuilder::default()
         .with_inner_size([1400.0, 820.0])
         .with_min_inner_size([980.0, 560.0])
-        .with_title("Multipath")
+        .with_title("QSB")
         .with_drag_and_drop(true);
     // The window's icon (assets/icon.png, drawn by scripts/make-icon.py).
     if let Ok(icon) = image::load_from_memory(include_bytes!("../assets/icon.png")) {
@@ -841,7 +841,7 @@ fn main() -> eframe::Result {
         ..Default::default()
     };
     eframe::run_native(
-        "Multipath",
+        "QSB",
         options,
         Box::new(move |cc| {
             cc.egui_ctx.set_theme(egui::Theme::Dark);

@@ -8,8 +8,8 @@ fn main() {
         {
             let mut res = winresource::WindowsResource::new();
             res.set_icon("assets/icon.ico");
-            res.set("ProductName", "Multipath");
-            res.set("FileDescription", "Multipath: HF channel simulator for WAV files");
+            res.set("ProductName", "QSB");
+            res.set("FileDescription", "QSB: HF fading and multipath for WAV files");
             if let Err(e) = res.compile() {
                 // A missing resource compiler must not stop the build: the exe just has no icon.
                 println!("cargo:warning=could not embed the exe icon: {e}");

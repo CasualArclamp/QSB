@@ -1,10 +1,14 @@
-# Multipath
+<img src="assets/icon.png" width="96" align="right" alt="QSB icon">
+
+# QSB
+
+QSB is the Q-code for "your signal is fading".
 
 Puts a WAV file through a simulated HF radio channel: echoes, Doppler shift, fading
 and noise, from light slow fading to heavy multipath. You hear and see the result
 while you move the controls, then write it to a new WAV.
 
-![The window playing an ISB file through the "Intense multipath" preset](docs/screenshot.png)
+![The window playing an ISB file through the "Sweeping notches" preset](docs/screenshot.png)
 
 ## Using it
 
@@ -54,9 +58,9 @@ against the file's average level.
 ## Command line
 
 ```
-multipath [FILE.wav] [--preset NAME] [--mode audio|iq|isb] [--seed N] [--play] [--mute]
-multipath --render IN.wav OUT.wav [--preset NAME] [--mode M] [--seed N] [--snr DB]
-multipath --spectrogram IN.wav OUT.png [--mode M]
+qsb [FILE.wav] [--preset NAME] [--mode audio|iq|isb] [--seed N] [--play] [--mute]
+qsb --render IN.wav OUT.wav [--preset NAME] [--mode M] [--seed N] [--snr DB]
+qsb --spectrogram IN.wav OUT.png [--mode M]
 ```
 
 ## Building
@@ -66,6 +70,6 @@ cargo build --release
 powershell -ExecutionPolicy Bypass -File scripts\build-portable.ps1
 ```
 
-The second makes a portable `exe\multipath.exe` (nothing to install).
+The second makes a portable `exe\qsb.exe` (nothing to install).
 
 GPL-3.0-or-later.
