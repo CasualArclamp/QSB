@@ -822,12 +822,22 @@ fn main() -> eframe::Result {
         }
         return Ok(());
     }
+    let mut viewport = egui::ViewportBuilder::default()
+        .with_inner_size([1400.0, 820.0])
+        .with_min_inner_size([980.0, 560.0])
+        .with_title("Multipath")
+        .with_drag_and_drop(true);
+    // The window's icon (assets/icon.png, drawn by scripts/make-icon.py).
+    if let Ok(icon) = image::load_from_memory(include_bytes!("../assets/icon.png")) {
+        let icon = icon.to_rgba8();
+        viewport = viewport.with_icon(egui::IconData {
+            width: icon.width(),
+            height: icon.height(),
+            rgba: icon.into_raw(),
+        });
+    }
     let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default()
-            .with_inner_size([1400.0, 820.0])
-            .with_min_inner_size([980.0, 560.0])
-            .with_title("Multipath")
-            .with_drag_and_drop(true),
+        viewport,
         ..Default::default()
     };
     eframe::run_native(
