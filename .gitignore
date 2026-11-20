@@ -1,0 +1,13 @@
+/target
+# Portable executable (scripts/build-portable.ps1)
+/exe/
+# Recordings and rendered audio: never committed.
+/samples/
+/out/
+*.wav
+*.flac
+.vscode/
+.idea/
+Thumbs.db
+# Notes for Claude Code sessions: local only
+CLAUDE.md

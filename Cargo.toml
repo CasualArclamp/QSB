@@ -1,0 +1,28 @@
+[package]
+name = "multipath"
+description = "Adds HF multipath (delay, Doppler shift, fading, noise) to WAV files, with a live preview"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/CasualArclamp/Multipath"
+rust-version = "1.95"
+
+[dependencies]
+# The glow (OpenGL) renderer, as DecSAT, DecAero and DecHAMDRM.
+eframe = { version = "0.36.2", default-features = false, features = ["default_fonts", "glow", "x11", "wayland"] }
+rfd = "0.17.2"
+cpal = "0.18.2"
+hound = "3.5.1"
+rustfft = "6.4"
+num-complex = "0.4.6"
+image = { version = "0.25.10", default-features = false, features = ["png"] }
+
+# DSP is unusably slow unoptimised.
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+debug = "line-tables-only"
