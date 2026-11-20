@@ -2,6 +2,8 @@
 
 # QSB
 
+[![release](https://img.shields.io/github/v/release/CasualArclamp/QSB?logo=github&label=release)](https://github.com/CasualArclamp/QSB/releases/latest) [![downloads](https://img.shields.io/github/downloads/CasualArclamp/QSB/total?logo=github&label=downloads)](https://github.com/CasualArclamp/QSB/releases)
+
 QSB is the Q-code for "your signal is fading".
 
 Puts a WAV file through a simulated HF radio channel: echoes, Doppler shift, fading
